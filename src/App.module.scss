@@ -1,0 +1,45 @@
+:root {
+  --font-family: 'Open Sans', sans-serif;
+}
+
+body {
+  font-family: var(--font-family);
+  color: #4a4a4a;
+  background-color: #f3f7fa;
+}
+
+.container {
+  max-width: 755px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.main {
+  position: relative;
+}
+
+.content {
+  padding-bottom: 50px;
+}
+
+.tab {
+  &__showMore {
+    width: 100%;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #fff;
+    line-height: 167%;
+    background-color: #2196f3;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: url('../../assets/img/cursor.svg'), auto;
+    transition: background-color 0.3s ease;
+    &:hover,
+    &:focus {
+      background-color: darken(#2196f3, 10%);
+    }
+  }
+}
