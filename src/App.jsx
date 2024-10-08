@@ -1,28 +1,40 @@
 import Filter from './components/Filter/Filter';
 import Header from './components/Header/Header';
 import Tabs from './components/Tabs/Tabs';
-import './styles/normalize.css';
+import TicketList from './components/Ticket/TicketList';
+
+
 import styles from './App.module.scss';
-import TicketCard from './components/Ticket/TicketCard';
-import Tab from './components/Tabs/Tab';
+
 
 function App() {
+  const tickets = [
+    {
+      price: '13 526 Р',
+      airlines: 'S7 Airlines',
+      routes: [
+        {
+          route: 'MOW - HKT',
+          time: '10:45 - 08:00',
+          duration: '21ч 15м',
+          layovers: ['HKG, ', 'JNB'],
+        },
+        { route: 'MOW - HKT', time: '11:20 - 00:50', duration: '13ч 30м', layovers: ['HKG'] },
+      ],
+    },
+  ];
   return (
     <div className={styles.container}>
       <Header />
 
       <main className={styles.main}>
-        <div className={styles.content}>
+        <div className={styles.filterColumn}>
           <Filter />
-          <Tabs />
-
-          <div>
-            <TicketCard />
-            <TicketCard />
-          </div>
         </div>
-
-        <Tab className={styles.tab__showMore} text="показать еще 5 билетов!" />
+        <div className={styles.ticketColumn}>
+          <Tabs />
+          <TicketList tickets={tickets}></TicketList>
+        </div>
       </main>
     </div>
   );

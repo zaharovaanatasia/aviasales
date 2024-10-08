@@ -15,9 +15,7 @@
   border: 1px solid #dfe5ec;
   cursor: url('../../assets/img/cursor.svg'), auto;
   transition: all 0.3s ease;
-  &:hover,
-  &:focus,
-  &.button--active {
+  &:hover {
     background-color: #2196f3;
     color: #fff;
   }
@@ -29,23 +27,42 @@
     border-radius: 0 5px 5px 0;
     border-left: none;
   }
-  &__showMore {
-    width: 100%;
-    font-size: 12px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    color: #fff;
-    line-height: 167%;
-    background-color: #2196f3;
-    padding: 15px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: url('../../assets/img/cursor.svg'), auto;
-    transition: background-color 0.3s ease;
-    &:hover,
-    &:focus {
-      background-color: darken(#2196f3, 10%);
-    }
-  }
 }
+
+.tabInput {
+  display: none;
+}
+
+.tabLabel {
+  display: inline-block;
+  width: 33.333%;
+}
+
+.tabInput:checked + .tab {
+  background-color: #2196f3;
+  color: #fff;
+}
+
+.tabInput:focus + .tab {
+  outline: 2px solid #2196f3;
+}
+
+// &__showMore {
+//     width: 100%;
+//     font-size: 12px;
+//     font-weight: 600;
+//     text-transform: uppercase;
+//     letter-spacing: 0.04em;
+//     color: #fff;
+//     line-height: 167%;
+//     background-color: #2196f3;
+//     padding: 15px 20px;
+//     border: none;
+//     border-radius: 5px;
+//     cursor: url('../../assets/img/cursor.svg'), auto;
+//     transition: background-color 0.3s ease;
+//     &:hover,
+//     &:focus {
+//       background-color: darken(#2196f3, 10%);
+//     }
+//   }

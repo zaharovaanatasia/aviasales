@@ -1,10 +1,18 @@
 import styles from './Tab.module.scss';
 
-const Tab = ({ text, className }) => {
+const Tab = ({ text, name, value, checked, onChange }) => {
   return (
-    <button className={`${styles.tab} ${className}`} type="button">
-      {text}
-    </button>
+    <label className={styles.tabLabel}>
+      <input
+        type="radio"
+        className={styles.tabInput}
+        name={name}
+        value={value}
+        checked={checked}
+        onChange={onChange}
+      />
+      <span className={styles.tab}>{text}</span>
+    </label>
   );
 };
 

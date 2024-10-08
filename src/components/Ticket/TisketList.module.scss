@@ -1,0 +1,25 @@
+.ticketList {
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.showMore {
+  width: 100%;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #fff;
+  line-height: 167%;
+  background-color: #2196f3;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: url('../../assets/img/cursor.svg'), auto;
+  transition: background-color 0.3s ease;
+  &:hover,
+  &:focus {
+    background-color: darken(#2196f3, 10%);
+  }
+}

@@ -2,7 +2,6 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
-  gap: 20px;
 
   &__block {
     flex: 1;
@@ -15,16 +14,21 @@
     }
   }
   &__caption {
+    font-weight: 400;
     font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
+    line-height: 150%;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
     color: #a0b0b9;
   }
   &__val {
-    font-size: 14px;
     font-weight: 600;
-    letter-spacing: 0.5px;
+    font-size: 14px;
+    line-height: 150%;
     color: #4a4a4a;
+  }
+ 
+   &:last-child {
+    margin-bottom: 0;
   }
 }
