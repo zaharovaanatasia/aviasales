@@ -1,3 +1,5 @@
+@use "sass:color";
+
 .ticketList {
   display: flex;
   flex-direction: column;
@@ -20,6 +22,6 @@
   transition: background-color 0.3s ease;
   &:hover,
   &:focus {
-    background-color: darken(#2196f3, 10%);
+     background-color: color.scale(#2196f3, $lightness: -18.4782608696%);
   }
 }
