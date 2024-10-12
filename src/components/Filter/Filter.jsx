@@ -2,7 +2,7 @@ import styles from './Filter.module.scss';
 
 const Filter = () => {
   return (
-    <div className={styles.filter}>
+    <form className={styles.filter}>
       <h3 className={styles.filter__title}>Количество пересадок</h3>
       <label className={styles.filter__label}>
         <input type="checkbox" className={styles.filter__checkbox} value="all"></input>
@@ -29,7 +29,7 @@ const Filter = () => {
         <span className={styles.filter__custom}></span>
         <span>3 пересадки</span>
       </label>
-    </div>
+    </form>
   );
 };
 
