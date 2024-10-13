@@ -3,9 +3,7 @@ import Header from './components/Header/Header';
 import Tabs from './components/Tabs/Tabs';
 import TicketList from './components/Ticket/TicketList';
 
-
 import styles from './App.module.scss';
-
 
 function App() {
   const tickets = [

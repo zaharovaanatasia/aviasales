@@ -19,13 +19,9 @@ const filterSlice = createSlice({
 
       if (filter === 'all') {
         const newState = !state.checkedFilter.all;
-        state.checkedFilter = {
-          all: newState,
-          none: newState,
-          one: newState,
-          two: newState,
-          three: newState,
-        };
+        Object.keys(state.checkedFilter).forEach((key) => {
+          state.checkedFilter[key] = newState;
+        });
       } else {
         state.checkedFilter[filter] = !state.checkedFilter[filter];
       }
@@ -46,4 +42,5 @@ const filterSlice = createSlice({
 });
 
 export const { toggleFilter } = filterSlice.actions;
+export const selectCheckedFilter = (state) => state.filter.checkedFilter;
 export default filterSlice.reducer;

@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
 import Tab from './Tab';
 import styles from './Tabs.module.scss';
-import { setSortBy } from '../../redux/slices/sortSlice';
+import { setSortBy, selectSortBy } from '../../redux/slices/sortSlice';
 
 const Tabs = () => {
   const dispatch = useDispatch();
-  const sortBy = useSelector((state) => state.sort.sortBy);
+  const sortBy = useSelector(selectSortBy);
 
   const handleSortChange = (value) => {
     dispatch(setSortBy(value));

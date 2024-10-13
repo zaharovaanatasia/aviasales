@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './Filter.module.scss';
-import { toggleFilter } from '../../redux/slices/filterSlice';
+import { toggleFilter, selectCheckedFilter } from '../../redux/slices/filterSlice';
 
 const Filter = () => {
   const dispatch = useDispatch();
-  const filter = useSelector((state) => state.filter.checkedFilter);
+  const filter = useSelector(selectCheckedFilter);
 
   const handleFilterChange = (filter) => {
     dispatch(toggleFilter(filter));
@@ -16,6 +16,7 @@ const Filter = () => {
       <label className={styles.filter__label}>
         <input
           type="checkbox"
+          id="filter-all"
           className={styles.filter__checkbox}
           value="all"
           checked={filter.all}
@@ -27,6 +28,7 @@ const Filter = () => {
       <label className={styles.filter__label}>
         <input
           type="checkbox"
+          id="filter-none"
           className={styles.filter__checkbox}
           value="none"
           checked={filter.none}
@@ -38,6 +40,7 @@ const Filter = () => {
       <label className={styles.filter__label}>
         <input
           type="checkbox"
+          id="filter-one"
           className={styles.filter__checkbox}
           value="one"
           checked={filter.one}
@@ -49,6 +52,7 @@ const Filter = () => {
       <label className={styles.filter__label}>
         <input
           type="checkbox"
+          id="filter-two"
           className={styles.filter__checkbox}
           value="two"
           checked={filter.two}
@@ -60,6 +64,7 @@ const Filter = () => {
       <label className={styles.filter__label}>
         <input
           type="checkbox"
+          id="filter-three"
           className={styles.filter__checkbox}
           value="three"
           checked={filter.three}
