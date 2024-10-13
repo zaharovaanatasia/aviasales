@@ -1,10 +1,12 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore } from '@reduxjs/toolkit';
+import sortReducer from './slices/sortSlice';
+import filterReducer from './slices/filterSlice';
 
 const store = configureStore({
-	reducer: {
-        // Define your reducers here
-    },
-    // Add any middleware you want to use here, such as thunk or logger
-})
+  reducer: {
+    sort: sortReducer,
+    filter: filterReducer,
+  },
+});
 
 export default store;

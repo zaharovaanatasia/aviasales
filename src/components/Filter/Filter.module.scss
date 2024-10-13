@@ -24,7 +24,8 @@
     font-size: 13px;
     font-weight: 400;
     padding: 10px 20px;
-    cursor: url('../../assets/img/cursor.svg'), auto;
+    cursor: pointer;
+
     &:hover,
     &:focus {
       background-color: #f1fcff;

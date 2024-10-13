@@ -1,9 +1,8 @@
-@use "sass:color";
+@use 'sass:color';
 
 .ticketList {
   display: flex;
   flex-direction: column;
-  
 }
 
 .showMore {
@@ -18,10 +17,10 @@
   padding: 15px 20px;
   border: none;
   border-radius: 5px;
-  cursor: url('../../assets/img/cursor.svg'), auto;
+  cursor: pointer;
   transition: background-color 0.3s ease;
   &:hover,
   &:focus {
-     background-color: color.scale(#2196f3, $lightness: -18.4782608696%);
+    background-color: color.scale(#2196f3, $lightness: -18.4782608696%);
   }
 }
