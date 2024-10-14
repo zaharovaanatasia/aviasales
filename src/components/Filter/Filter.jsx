@@ -6,12 +6,12 @@ const Filter = () => {
   const dispatch = useDispatch();
   const filter = useSelector(selectCheckedFilter);
 
-  const handleFilterChange = (filter) => {
-    dispatch(toggleFilter(filter));
+  const handleFilterChange = (e) => {
+    dispatch(toggleFilter(e.target.value));
   };
 
   return (
-    <form className={styles.filter} onChange={(e) => handleFilterChange(e.target.value)}>
+    <form className={styles.filter} onChange={handleFilterChange}>
       <fieldset className={styles.filter__fieldset}>
         <legend className={styles.filter__title}>Количество пересадок</legend>
         <label className={styles.filter__label}>
@@ -20,7 +20,8 @@ const Filter = () => {
             id="filter-all"
             className={styles.filter__checkbox}
             value="all"
-            defaultChecked={filter.all}
+            checked={filter.all}
+            onChange={() => {}}
           ></input>
           <span className={styles.filter__custom}></span>
           <span>Все</span>
@@ -31,7 +32,8 @@ const Filter = () => {
             id="filter-none"
             className={styles.filter__checkbox}
             value="none"
-            defaultChecked={filter.none}
+            checked={filter.none}
+            onChange={() => {}}
           ></input>
           <span className={styles.filter__custom}></span>
           <span>Без пересадок</span>
@@ -42,7 +44,8 @@ const Filter = () => {
             id="filter-one"
             className={styles.filter__checkbox}
             value="one"
-            defaultChecked={filter.one}
+            checked={filter.one}
+            onChange={() => {}}
           ></input>
           <span className={styles.filter__custom}></span>
           <span>1 пересадка</span>
@@ -53,7 +56,8 @@ const Filter = () => {
             id="filter-two"
             className={styles.filter__checkbox}
             value="two"
-            defaultChecked={filter.two}
+            checked={filter.two}
+            onChange={() => {}}
           ></input>
           <span className={styles.filter__custom}></span>
           <span>2 пересадки</span>
@@ -64,7 +68,8 @@ const Filter = () => {
             id="filter-three"
             className={styles.filter__checkbox}
             value="three"
-            defaultChecked={filter.three}
+            checked={filter.three}
+            onChange={() => {}}
           ></input>
           <span className={styles.filter__custom}></span>
           <span>3 пересадки</span>

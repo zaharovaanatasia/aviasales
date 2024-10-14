@@ -16,27 +16,28 @@ const filterSlice = createSlice({
   reducers: {
     toggleFilter: (state, action) => {
       const filter = action.payload;
+     
 
-      if (filter === 'all') {
-        const newState = !state.checkedFilter.all;
-        Object.keys(state.checkedFilter).forEach((key) => {
-          state.checkedFilter[key] = newState;
-        });
-      } else {
-        state.checkedFilter[filter] = !state.checkedFilter[filter];
-      }
+        if (filter === 'all') {
+          const newState = !state.checkedFilter.all;
+          Object.keys(state.checkedFilter).forEach((key) => {
+            state.checkedFilter[key] = newState;
+          });
+        } else {
+          state.checkedFilter[filter] = !state.checkedFilter[filter];
+        }
 
-      if (!state.checkedFilter[filter] && state.checkedFilter.all) {
-        state.checkedFilter.all = false;
-      }
-      if (
-        state.checkedFilter.none &&
-        state.checkedFilter.one &&
-        state.checkedFilter.two &&
-        state.checkedFilter.three
-      ) {
-        state.checkedFilter.all = true;
-      }
+        if (!state.checkedFilter[filter] && state.checkedFilter.all) {
+          state.checkedFilter.all = false;
+        }
+        if (
+          state.checkedFilter.none &&
+          state.checkedFilter.one &&
+          state.checkedFilter.two &&
+          state.checkedFilter.three
+        ) {
+          state.checkedFilter.all = true;
+        }
     },
   },
 });
