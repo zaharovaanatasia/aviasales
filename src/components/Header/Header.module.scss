@@ -8,11 +8,8 @@
 
 .logo {
   display: block;
-  width: 60px;
-  height: 60px;
+
   &__img {
-    width: 60px;
-    height: 60px;
     object-fit: cover;
     object-position: center;
   }

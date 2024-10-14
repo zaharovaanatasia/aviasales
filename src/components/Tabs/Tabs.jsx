@@ -4,8 +4,8 @@ import styles from './Tabs.module.scss';
 import { setSortBy, selectSortBy } from '../../redux/slices/sortSlice';
 
 const Tabs = () => {
-  const dispatch = useDispatch();
-  const sortBy = useSelector(selectSortBy);
+  const dispatch = useDispatch(); // хук, который позволяет отправлять экшены в Redux
+  const sortBy = useSelector(selectSortBy); //  хук, который позволяет получать данные из состояния Redux.
 
   const handleSortChange = (value) => {
     dispatch(setSortBy(value));

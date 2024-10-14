@@ -5,7 +5,7 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <a href="#" className={styles.logo}>
-        <img src={logo} alt="Логотип Aviasales" className="logo__img" />
+        <img src={logo} alt="Логотип Aviasales" className="logo__img" width="60" height="60"/>
       </a>
     </header>
   );
