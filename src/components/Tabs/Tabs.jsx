@@ -1,39 +1,36 @@
 import { useDispatch, useSelector } from 'react-redux';
-import Tab from './Tab';
 import styles from './Tabs.module.scss';
 import { setSortBy, selectSortBy } from '../../redux/slices/sortSlice';
 
 const Tabs = () => {
-  const dispatch = useDispatch(); // хук, который позволяет отправлять экшены в Redux
-  const sortBy = useSelector(selectSortBy); //  хук, который позволяет получать данные из состояния Redux.
+  const dispatch = useDispatch();
+  const sortBy = useSelector(selectSortBy);
 
-  const handleSortChange = (value) => {
+  const tabs = [
+    { text: 'Самый дешевый', value: 'cheap' },
+    { text: 'Самый быстрый', value: 'fast' },
+    { text: 'Оптимальный', value: 'optimal' },
+  ];
+
+  const handleChange = (value) => {
     dispatch(setSortBy(value));
   };
 
   return (
     <form className={styles.tabs}>
-      <Tab
-        text="Самый дешевый"
-        name="ticketTabs"
-        value="cheap"
-        checked={sortBy === 'cheap'}
-        onChange={() => handleSortChange('cheap')}
-      ></Tab>
-      <Tab
-        text="Самый быстрый"
-        name="ticketTabs"
-        value="fast"
-        checked={sortBy === 'fast'}
-        onChange={() => handleSortChange('fast')}
-      ></Tab>
-      <Tab
-        text="Оптимальный"
-        name="ticketTabs"
-        value="optimal"
-        checked={sortBy === 'optimal'}
-        onChange={() => handleSortChange('optimal')}
-      ></Tab>
+      {tabs.map((tab) => (
+        <label key={tab.value} className={styles.tabLabel}>
+          <input
+            type="radio"
+            className={styles.tabInput}
+            name="ticketTabs"
+            value={tab.value}
+            checked={sortBy === tab.value}
+            onChange={() => handleChange(tab.value)}
+          />
+          <span className={styles.tab}>{tab.text}</span>
+        </label>
+      ))}
     </form>
   );
 };
