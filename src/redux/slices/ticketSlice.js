@@ -6,10 +6,15 @@ export const fetchSearchId = createAsyncThunk(
     try {
       const response = await fetch('https://front-test.dev.aviasales.ru/search');
       if (!response.ok) {
-        throw new Error('Failed to fetch searchId');
+        return rejectWithValue('Ошибка загрузки данных');
       }
+      console.log(data);
+
       const data = await response.json();
+      console.log(data);
+
       return data.searchId;
+      
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -25,7 +30,7 @@ export const fetchTickets = createAsyncThunk(
       );
 
       if (!response.ok) {
-        throw new Error('Failed to fetch tickets');
+        return rejectWithValue('Ошибка загрузки данных');
       }
 
       const data = await response.json();
@@ -51,10 +56,37 @@ const ticketSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchTickets.fulfilled, (state, action) => {});
+    builder
+      .addCase(fetchSearchId.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchSearchId.fulfilled, (state, action) => {
+        state.loading = false;
+        state.searchId = action.payload;
+      })
+      .addCase(fetchSearchId.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(fetchTickets.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchTickets.fulfilled, (state, action) => {
+        state.loading = false;
+        state.tickets = action.payload;
+        state.stop = action.payload.stop;
+      })
+      .addCase(fetchTickets.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      });
   },
 });
 
-export const selectTicket = (state) => state.tickets.tickets;
+export const selectTickets = (state) => state.tickets.tickets;
+export const selectLoading = (state) => state.tickets.loading;
+export const selectError = (state) => state.tickets.error;
+export const selectSearchId = (state) => state.tickets.searchId;
 export default ticketSlice.reducer;
-``;

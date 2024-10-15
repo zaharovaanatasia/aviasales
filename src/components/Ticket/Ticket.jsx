@@ -1,38 +1,45 @@
 import styles from './Ticket.module.scss';
-import RouteDetails from './RouteDetails';
 
 import PropTypes from 'prop-types';
 
-const Ticket = ({ price, airlines, routes }) => {
+const Ticket = () => {
   return (
     <div className={styles.ticket}>
       <div className={styles.header}>
-        <div className={styles.header__price}>{price}</div>
-        <img src="#" alt={airlines}></img>
+        <div className={styles.header__price}>13 400 Р</div>
+        <img src="#" alt="company logo" width="110" height="36"></img>
       </div>
-      {routes.map((route, index) => (
-        <RouteDetails
-          key={index}
-          route={route.route}
-          time={route.time}
-          duration={route.duration}
-          layovers={route.layovers}
-        />
-      ))}
+
+      <div className={styles.route}>
+        <div className={styles.route_block}>
+          <div className={styles.route__caption}>MOW – HKT</div>
+          <div className={styles.route__val}>10:45 – 08:00</div>
+        </div>
+        <div className={styles.route_block}>
+          <div className={styles.route__caption}>В пути:</div>
+          <div className={styles.route__val}>21ч 15м</div>
+        </div>
+        <div className={styles.route_block}>
+          <div className={styles.route__caption}>2 пересадки</div>
+          <div className={styles.route__val}>HKG, JNB</div>
+        </div>
+      </div>
+      <div className={styles.route}>
+        <div className={styles.route_block}>
+          <div className={styles.route__caption}>MOW – HKT</div>
+          <div className={styles.route__val}>10:45 – 08:00</div>
+        </div>
+        <div className={styles.route_block}>
+          <div className={styles.route__caption}>В пути:</div>
+          <div className={styles.route__val}>21ч 15м</div>
+        </div>
+        <div className={styles.route_block}>
+          <div className={styles.route__caption}>2 пересадки</div>
+          <div className={styles.route__val}>HKG, JNB</div>
+        </div>
+      </div>
     </div>
   );
-};
-Ticket.propTypes = {
-  price: PropTypes.string.isRequired,
-  airlines: PropTypes.string.isRequired,
-  routes: PropTypes.arrayOf(
-    PropTypes.shape({
-      route: PropTypes.string.isRequired,
-      time: PropTypes.string.isRequired,
-      duration: PropTypes.string.isRequired,
-      layovers: PropTypes.arrayOf(PropTypes.string).isRequired,
-    }),
-  ).isRequired,
 };
 
 export default Ticket;
