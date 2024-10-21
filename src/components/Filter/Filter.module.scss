@@ -10,6 +10,9 @@
 
   &__fieldset {
     border: none;
+    @media (max-width: 960px) {
+      text-align: left;
+    }
   }
   &__title {
     line-height: 100%;
@@ -28,6 +31,11 @@
     font-weight: 400;
     padding: 10px 20px;
     cursor: pointer;
+    @media (max-width: 960px) {
+      min-width: 200px;
+      width: 100%;
+      justify-content: flex-start;
+    }
 
     &:hover,
     &:focus {

@@ -1,4 +1,4 @@
-@import './styles/normalize.css';
+@import '../../styles/normalize.css';
 
 :root {
   --font-family: 'Open Sans', sans-serif;
@@ -22,6 +22,11 @@ body {
   position: relative;
   display: flex;
   flex: 1;
+  @media (max-width: 960px) {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
 }
 
 .filterColumn {

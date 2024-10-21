@@ -31,8 +31,8 @@ const Filter = () => {
             type="checkbox"
             id="filter-none"
             className={styles.filter__checkbox}
-            value="none"
-            checked={filter.none}
+            value="0"
+            checked={filter['0']}
             onChange={() => {}}
           ></input>
           <span className={styles.filter__custom}></span>
@@ -43,8 +43,8 @@ const Filter = () => {
             type="checkbox"
             id="filter-one"
             className={styles.filter__checkbox}
-            value="one"
-            checked={filter.one}
+            value="1"
+            checked={filter['1']}
             onChange={() => {}}
           ></input>
           <span className={styles.filter__custom}></span>
@@ -55,8 +55,8 @@ const Filter = () => {
             type="checkbox"
             id="filter-two"
             className={styles.filter__checkbox}
-            value="two"
-            checked={filter.two}
+            value="2"
+            checked={filter['2']}
             onChange={() => {}}
           ></input>
           <span className={styles.filter__custom}></span>
@@ -67,8 +67,8 @@ const Filter = () => {
             type="checkbox"
             id="filter-three"
             className={styles.filter__checkbox}
-            value="three"
-            checked={filter.three}
+            value="3"
+            checked={filter['3']}
             onChange={() => {}}
           ></input>
           <span className={styles.filter__custom}></span>

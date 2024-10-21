@@ -4,17 +4,13 @@ export const fetchSearchId = createAsyncThunk(
   'tickets/fetchSearchId',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await fetch('https://front-test.dev.aviasales.ru/search');
+      const response = await fetch('https://aviasales-test-api.kata.academy/search');
       if (!response.ok) {
-        return rejectWithValue('Ошибка загрузки данных');
+        throw new Error('Ошибка получения id');
       }
-      console.log(data);
 
       const data = await response.json();
-      console.log(data);
-
       return data.searchId;
-      
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -26,17 +22,15 @@ export const fetchTickets = createAsyncThunk(
   async (searchId, { rejectWithValue }) => {
     try {
       const response = await fetch(
-        `https://front-test.dev.aviasales.ru/tickets?searchId=${searchId}`,
+        `https://aviasales-test-api.kata.academy/tickets?searchId=${searchId}`,
       );
-
       if (!response.ok) {
-        return rejectWithValue('Ошибка загрузки данных');
+        throw new Error('Ошибка загрузки данных');
       }
 
       const data = await response.json();
-      console.log(data);
 
-      return data.tickets;
+      return data;
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -49,12 +43,17 @@ const initialState = {
   loading: false,
   error: null,
   stop: false,
+  visibleTickets: 5,
 };
 
 const ticketSlice = createSlice({
   name: 'tickets',
   initialState,
-  reducers: {},
+  reducers: {
+    increaseVisibleTickets: (state) => {
+      state.visibleTickets += 5;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchSearchId.pending, (state) => {
@@ -62,11 +61,9 @@ const ticketSlice = createSlice({
         state.error = null;
       })
       .addCase(fetchSearchId.fulfilled, (state, action) => {
-        state.loading = false;
         state.searchId = action.payload;
       })
       .addCase(fetchSearchId.rejected, (state, action) => {
-        state.loading = false;
         state.error = action.payload;
       })
       .addCase(fetchTickets.pending, (state) => {
@@ -74,19 +71,27 @@ const ticketSlice = createSlice({
         state.error = null;
       })
       .addCase(fetchTickets.fulfilled, (state, action) => {
-        state.loading = false;
-        state.tickets = action.payload;
-        state.stop = action.payload.stop;
+        state.loading = true;
+        state.tickets = state.tickets.concat(action.payload.tickets);
+        if (action.payload.stop) {
+          state.stop = true;
+          state.loading = false;
+        }
       })
       .addCase(fetchTickets.rejected, (state, action) => {
-        state.loading = false;
+        state.loading = true;
         state.error = action.payload;
       });
   },
 });
 
+export const { increaseVisibleTickets } = ticketSlice.actions;
+
 export const selectTickets = (state) => state.tickets.tickets;
 export const selectLoading = (state) => state.tickets.loading;
 export const selectError = (state) => state.tickets.error;
 export const selectSearchId = (state) => state.tickets.searchId;
+export const selectStop = (state) => state.tickets.stop;
+export const selectVisibleTickets = (state) => state.tickets.visibleTickets;
+
 export default ticketSlice.reducer;

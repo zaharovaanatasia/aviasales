@@ -30,7 +30,6 @@
   }
 }
 
-
 .route {
   display: flex;
   justify-content: space-between;
@@ -53,6 +52,7 @@
     letter-spacing: 0.04em;
     text-transform: uppercase;
     color: #a0b0b9;
+    min-width: 120px;
   }
   &__val {
     font-weight: 600;

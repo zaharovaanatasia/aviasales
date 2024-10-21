@@ -1,14 +1,13 @@
-import Filter from './components/Filter/Filter';
-import Header from './components/Header/Header';
-import Tabs from './components/Tabs/Tabs';
-import TicketList from './components/TicketList/TicketList';
+import Filter from '../Filter/Filter';
+import Header from '../Header/Header';
+import Tabs from '../Tabs/Tabs';
+import TicketList from '../TicketList/TicketList';
 import styles from './App.module.scss';
 
 function App() {
   return (
     <div className={styles.container}>
       <Header />
-
       <main className={styles.main}>
         <div className={styles.filterColumn}>
           <Filter />
@@ -21,5 +20,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
