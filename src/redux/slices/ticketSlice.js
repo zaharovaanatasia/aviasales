@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { nanoid } from 'nanoid';
 
 export const fetchSearchId = createAsyncThunk(
   'tickets/fetchSearchId',
@@ -72,7 +73,10 @@ const ticketSlice = createSlice({
       })
       .addCase(fetchTickets.fulfilled, (state, action) => {
         state.loading = true;
-        state.tickets = state.tickets.concat(action.payload.tickets);
+
+        const ticketWithId = action.payload.tickets.map((ticket) => ({ ...ticket, id: nanoid() }));
+        state.tickets = state.tickets.concat(ticketWithId);
+
         if (action.payload.stop) {
           state.stop = true;
           state.loading = false;

@@ -1,5 +1,4 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { v4 as uuidv4 } from 'uuid';
 import { useEffect, useState } from 'react';
 
 import Ticket from '../Ticket/Ticket';
@@ -105,7 +104,7 @@ const TicketList = () => {
         <>
           <ul className={styles.ticketList}>
             {sortedList.slice(0, visibleTickets).map((ticket) => (
-              <li key={uuidv4()}>
+              <li key={ticket.id}>
                 <Ticket ticket={ticket} />
               </li>
             ))}
